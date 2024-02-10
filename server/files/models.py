@@ -2,6 +2,9 @@ from django.db import models
 from google.cloud import storage
 
 # download single from google storage
+
+
+
 def download_blob(bucket_name, source_blob_name, destination_file_name):
     """Downloads a blob from the bucket."""
     # The ID of your GCS bucket
