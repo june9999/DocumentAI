@@ -29,10 +29,11 @@ body,
 }
 
 .text-updater-node {
-  height: 50px;
+  height: 200px;
   border: 1px solid #eee;
   padding: 5px;
   border-radius: 5px;
+  color: #242424;
   background: white;
 }
 
@@ -40,4 +41,8 @@ body,
   display: block;
   color: #777;
   font-size: 12px;
+}
+
+.clip {
+  clip: rect(0, 0, 0, 0);
 }

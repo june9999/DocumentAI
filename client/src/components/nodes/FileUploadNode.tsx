@@ -51,6 +51,7 @@ import { Handle, Position } from "reactflow";
 
 export function FileUploadNode({ data, isConnectable }) {
   const [fileList, setFileList] = useState([]);
+  const [state, setState] = useState({ isloading: false, error: "", data: {} });
 
   const addToFileList = (e) => {
     const filesArray = Array.from(e.target.files);
@@ -66,17 +67,42 @@ export function FileUploadNode({ data, isConnectable }) {
     setFileList(newArray);
   };
 
+  const submitForm = async (e) => {
+    e.preventDefault();
+    setState({ isloading: true, error: "", data: {} });
+    data = fileList;
+    try {
+      const res = await fetch("http://127.0.0.1:8000/files/post", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      setState({ isloading: false, error: "", data: res });
+    } catch (error) {
+      // setState({ isloading: false, error: {error?.message}, data: {} });
+    }
+  };
+
   useEffect(() => {});
   return (
-    <div className="text-updater-node">
+    <div className="text-updater-node ">
       <Handle
         type="target"
         position={Position.Left}
         isConnectable={isConnectable}
       />
-      <form>
+      <form onSubmit={submitForm}>
         <label htmlFor="text">File Upload:</label>
-        <input multiple type="file" id="files" onChange={addToFileList} />
+        <input
+          multiple
+          type="file"
+          id="files"
+          className="clip"
+          onChange={addToFileList}
+        />
         <label htmlFor="selectFile">Choose File:</label>
         {fileList &&
           fileList.map((e, index) => (
