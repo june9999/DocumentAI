@@ -1,90 +1,109 @@
-import { useMemo } from "react";
-import ReactFlow from "reactflow";
+import React, { useCallback } from "react";
+import ReactFlow, {
+  ReactFlowProvider,
+  useNodesState,
+  useEdgesState,
+  useReactFlow,
+} from "reactflow";
 
+import { useMemo } from "react";
+import { MiniMap } from "reactflow";
 import "reactflow/dist/style.css";
 import { FileUploadNode } from "./nodes/FileUploadNode";
-const rfStyle = {
-  backgroundColor: "#B8CEFF",
+
+const getLayoutedElements = (nodes, edges) => {
+  return { nodes, edges };
 };
 
-export default function ReactNode() {
+const LayoutFlow = () => {
   const nodeTypes = useMemo(() => ({ UploadNode: FileUploadNode }), []);
   const processNodes = [
     {
       id: "1",
-      position: { x: 0, y: 0 },
+      position: { x: 100, y: 0 },
       data: { label: "Process Start" },
-      sourcePosition: "right",
     },
     {
       id: "2",
-      position: { x: 200, y: 0 },
+      position: { x: 100, y: 200 },
       data: { label: "Upload Files from Frontend" },
-      targetPosition: "left",
-      sourcePosition: "right",
       type: "UploadNode",
     },
     {
       id: "3",
-      position: { x: 500, y: 0 },
+      position: { x: 600, y: 350 },
       data: { label: "Send to Backend" },
-      targetPosition: "left",
-      sourcePosition: "right",
     },
     {
       id: "4",
-      position: { x: 500, y: 100 },
+      position: { x: 600, y: 250 },
       data: { label: "Send to Google Storage" },
-      targetPosition: "left",
-      sourcePosition: "right",
     },
     {
       id: "5",
-      position: { x: 700, y: 0 },
+      position: { x: 600, y: 100 },
       data: { label: "Fetch from Document API to Backend" },
-      targetPosition: "left",
-      sourcePosition: "right",
     },
     {
       id: "6",
-      position: { x: 900, y: 0 },
-      data: { label: "Fetch from Backend to Frontend " },
-      targetPosition: "left",
-      sourcePosition: "right",
+      position: { x: 900, y: 100 },
+      data: { label: "Fetch Result " },
     },
     {
       id: "7",
-      position: { x: 1100, y: 0 },
-      data: { label: "Show Result" },
-      targetPosition: "left",
-      sourcePosition: "right",
-    },
-    {
-      id: "8",
-      position: { x: 1300, y: 0 },
+      position: { x: 900, y: 0 },
       data: { label: "Process End" },
-      targetPosition: "left",
     },
   ];
   const initialEdges = [
-    { id: "e1-2", source: "1", target: "2" },
-    { id: "e2-3", source: "2", target: "3" },
-    { id: "e3-4", source: "3", target: "4" },
-    { id: "e4-5", source: "4", target: "5" },
-    { id: "e5-6", source: "5", target: "6" },
-    { id: "e5-6", source: "5", target: "6" },
-    { id: "e6-7", source: "6", target: "7" },
-    { id: "e7-8", source: "7", target: "8" },
+    { id: "e1-2", source: "1", target: "2", animated: true },
+    { id: "e2-3", source: "2", target: "3", animated: true },
+    { id: "e3-4", source: "3", target: "4", animated: true },
+    { id: "e4-5", source: "4", target: "5", animated: true },
+    { id: "e5-6", source: "5", target: "6", animated: true },
+    { id: "e5-6", source: "6", target: "7", animated: true },
+    { id: "e6-7", source: "7", target: "8", animated: true },
   ];
+  const { fitView } = useReactFlow();
+  const [nodes, setNodes, onNodesChange] = useNodesState(processNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  const onLayout = useCallback(() => {
+    const layouted = getLayoutedElements(nodes, edges);
+
+    setNodes([...layouted.nodes]);
+    setEdges([...layouted.edges]);
+
+    window.requestAnimationFrame(() => {
+      fitView();
+    });
+  }, [nodes, edges]);
 
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <ReactFlow
-        nodes={processNodes}
-        edges={initialEdges}
-        nodeTypes={nodeTypes}
-        style={rfStyle}
-      />
+    <ReactFlow
+      nodes={processNodes}
+      edges={initialEdges}
+      nodeTypes={nodeTypes}
+      onNodesChange={onNodesChange}
+      onEdgesChange={onEdgesChange}
+      fitView
+    >
+      <div className="absolte">
+        <MiniMap nodeStrokeWidth={3} />
+      </div>
+    </ReactFlow>
+  );
+};
+
+export default function ReactNode() {
+  return (
+    <div
+      className=" bg-gray-50 dark:text-white dark:bg-gray-800 p-10"
+      style={{ width: "100vw", height: "80vh" }}
+    >
+      <ReactFlowProvider>
+        <LayoutFlow />
+      </ReactFlowProvider>
     </div>
   );
 }

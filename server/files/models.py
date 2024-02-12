@@ -6,8 +6,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 path=os.path.join(BASE_DIR, 'local')
 
 
-
-
 def front_to_local(files):
     if files:
             for uploaded_file in files:

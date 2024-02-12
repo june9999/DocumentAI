@@ -5,8 +5,8 @@ import os
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
-
+import json
+import requests
 
 # Create your views here.
 def index(request):
@@ -28,9 +28,10 @@ def files(request):
                 os.remove(os.path.join('local', uploaded_file.name))
         print("Files deleted successfully")
         return Response("Upload sucess",status=status.HTTP_201_CREATED)
+    
     if request.method =='GET':
         download_directory='download' 
-        download_bucket_with_transfer_manager("result_from_ch",download_directory)
+        # download_bucket_with_transfer_manager("result_from_ch",download_directory)
         files=os.listdir('./download')
         data =[]
         print(files)
@@ -38,6 +39,7 @@ def files(request):
              f = open("./download/" + i, encoding="utf8")
              content= f.read()
              data.append({"name":i,"content":content})
-        print(data)
-        return Response(data=data,status=status.HTTP_201_CREATED)
+        json_data = json.dumps(data)
+     
+        return Response(data=data,status=status.HTTP_200_OK,headers={"Data":data})
 
