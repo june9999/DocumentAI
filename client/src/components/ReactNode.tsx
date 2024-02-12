@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import ReactFlow, {
   ReactFlowProvider,
   useNodesState,
@@ -66,6 +66,7 @@ const LayoutFlow = () => {
     {
       id: "User",
       type: "group",
+      data: { label: "Process End" },
       position: { x: 70, y: -10 },
       style: {
         width: 350,

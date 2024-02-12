@@ -4,13 +4,11 @@
 
 cd client
 
-npm i 
+npm i
 
 change .env.example to .env
 
-add local server url as VITE_LOCAL
-
-
+add local server url as VITE_LOCAL,
 
 cd ..
 
@@ -26,7 +24,7 @@ python manage.py runserver
 
 create a new project in google console
 
-enable apis 
+enable APIs
 
 create service account
 
@@ -44,23 +42,19 @@ change trigger type as cloud storage, event type as google.cloud.storage.object.
 
 change info in google_functions.py
 
-use google_function.py, google_requirements.text as function
+copy content from google_function.py, google_requirements.text to create function
 
 deploy function
 
-
 ## Key Features
+
 PDF Upload
 
 Process ReactFlow
 
 Automatic Document AI Trigger
 
-OCR Processer 
-
-
-
-
+Processer
 
 ## Technologies used
 
