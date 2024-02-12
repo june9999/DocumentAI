@@ -69,6 +69,7 @@ React.js, vite, react-router-dom, axios
 Reactflow, Tailwind css, Flowbite
 
 Google Services:
+
 Cloud Functions API
 
 Cloud Document AI API
