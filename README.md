@@ -10,9 +10,14 @@ change .env.example to .env
 
 add local server url as VITE_LOCAL
 
+
+
 cd ..
+
 cd server
+
 add token.json inside the server folder (token.json from Google Setting)
+
 python manage.py runserver
 
 ## Google Setting
