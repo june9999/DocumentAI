@@ -31,7 +31,7 @@ def files(request):
     
     if request.method =='GET':
         download_directory='download' 
-        # download_bucket_with_transfer_manager("result_from_ch",download_directory)
+        download_bucket_with_transfer_manager("result_from_ch",download_directory)
         files=os.listdir('./download')
         data =[]
         print(files)
