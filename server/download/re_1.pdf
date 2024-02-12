@@ -1,0 +1,25 @@
+NeuroSense.
+Coding Challenge 2024
+Document Processing Pipeline
+Objective:
+Build a document processing pipeline that allows users to upload files (PDFs, etc.)
+from the frontend, store the uploaded files in Google Cloud Storage, and once the
+files are uploaded use Document AI to extract text from these files, and display
+the extracted text on a separate page in the frontend.
+Note: Users should be able to upload multiple files at once & text should be
+extracted from all these files in one batch.
+Key Components:
+Frontend (React.js):
+Implement a React Flow diagram with nodes representing different
+stages of the pipeline. (https://reactflow.dev)
+Create a node for file upload, allowing users to upload documents.
+● Design the frontend with an intuitive and user-friendly interface
+using React components.
+Backend (Django):
+Develop Django API endpoints to handle file uploads and communication
+with Google Cloud.
+Store uploaded files in Google Cloud Storage.
+● Utilise Document AI to extract text from the uploaded documents.
+Google Cloud Integration:
+Configure Google Cloud Storage for file storage.
+Integrate Document AI for text extraction.

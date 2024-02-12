@@ -4,6 +4,7 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   useReactFlow,
+  Position,
 } from "reactflow";
 
 import { useMemo } from "react";
@@ -20,19 +21,22 @@ const LayoutFlow = () => {
   const processNodes = [
     {
       id: "1",
-      position: { x: 100, y: 0 },
+      position: { x: 175, y: 0 },
       data: { label: "Process Start" },
     },
     {
       id: "2",
       position: { x: 100, y: 200 },
       data: { label: "Upload Files from Frontend" },
+
       type: "UploadNode",
     },
     {
       id: "3",
       position: { x: 600, y: 350 },
       data: { label: "Send to Backend" },
+      targetPosition: Position.Left,
+      sourcePosition: Position.Top,
     },
     {
       id: "4",
@@ -42,17 +46,42 @@ const LayoutFlow = () => {
     {
       id: "5",
       position: { x: 600, y: 100 },
-      data: { label: "Fetch from Document API to Backend" },
+      data: { label: "Google functions to trigger Document AI" },
+      targetPosition: Position.Bottom,
+      sourcePosition: Position.Right,
     },
     {
       id: "6",
       position: { x: 900, y: 100 },
       data: { label: "Fetch Result " },
+      targetPosition: Position.Left,
+      sourcePosition: Position.Top,
     },
     {
       id: "7",
       position: { x: 900, y: 0 },
       data: { label: "Process End" },
+      targetPosition: Position.Bottom,
+    },
+    {
+      id: "User",
+      type: "group",
+      position: { x: 70, y: -10 },
+      style: {
+        width: 350,
+        height: 450,
+      },
+      zIndex: -1,
+    },
+    {
+      id: "Backend",
+      type: "group",
+      position: { x: 500, y: -10 },
+      style: {
+        width: 350,
+        height: 450,
+      },
+      zIndex: -1,
     },
   ];
   const initialEdges = [

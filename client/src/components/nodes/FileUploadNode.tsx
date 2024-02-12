@@ -45,13 +45,13 @@ export function FileUploadNode({ isConnectable }: FileUploadNodeProps) {
   };
 
   return (
-    <div className="text-updater-node h-auto">
+    <div className="text-updater-node h-auto ">
       <Handle
         type="target"
-        position={Position.Left}
+        position={Position.Top}
         isConnectable={isConnectable}
       />
-      <p>Upload Files</p>
+      <p className="text-xs text-center">Upload Files</p>
       <div className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-400 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 h-[80%]">
         <form onSubmit={submitForm}>
           <label htmlFor="text">PDF File Upload:</label>
