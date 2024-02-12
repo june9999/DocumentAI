@@ -16,7 +16,7 @@ cd ..
 
 cd server
 
-add token.json inside the server folder (token.json from Google Setting)
+add token.json inside the server folder (token.json from Google Credential Setting)
 
 python manage.py runserver
 
