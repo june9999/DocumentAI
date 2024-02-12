@@ -24,9 +24,9 @@ python manage.py runserver
 
 ### Create access credentials
 
-create a new project
+create a new project in google console
 
-enable api:
+enable apis 
 
 create service account
 
