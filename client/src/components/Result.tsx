@@ -61,8 +61,10 @@ const Result = () => {
               })}
           </tbody>
         </table>
-        {state.isloading && "loading..."}
-        {state.error && "Something wrong. Please try again"}
+        {state.isloading && <p className="p-[2rem]">Loading...</p>}
+        {state.error && (
+          <p className="p-[2rem]">Something wrong. Please try again later.</p>
+        )}
       </div>
     </>
   );
