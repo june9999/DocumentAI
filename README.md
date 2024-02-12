@@ -25,19 +25,28 @@ python manage.py runserver
 # Create access credentials
 
 create a new project
+
 enable api:
+
 create service account
+
 download json file and rename as token.json
+
 assign related roles to service account
 
 # Create google function
 
 create new function
+
 create two buckers, challenge-process and result_from_ch
+
 change trigger type as cloud storage, event type as google.cloud.storage.object.v1.finalized
+
 change info in google_functions.py
+
 use google_function.py, google_requirements.text as function
-deploy
+
+deploy function
 
 ## Technologies used
 
