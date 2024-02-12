@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface file {
   name: string;
@@ -8,18 +8,24 @@ interface file {
 
 const Result = () => {
   const [data, setData] = useState([]);
-  // try with axios because of cors problem
-  useState(() => {
+  const [state, setState] = useState({ isloading: false, error: "" });
+
+  useEffect(() => {
+    setState({ isloading: true, error: "" });
     const getResult = async () => {
       axios
         .get(`${import.meta.env.VITE_LOCAL}files/api`)
         .then((res) => {
           setData(res.data);
+          setState({ isloading: false, error: "" });
         })
-        .catch((e) => console.log(e));
+        .catch((e) => {
+          console.log(e);
+          setState({ isloading: false, error: e });
+        });
     };
     getResult();
-  });
+  }, []);
 
   return (
     <>
@@ -39,7 +45,10 @@ const Result = () => {
             {data &&
               data.map((e: file) => {
                 return (
-                  <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <tr
+                    className="border-b border-gray-200 dark:border-gray-700"
+                    key={e.name}
+                  >
                     <th
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
@@ -52,6 +61,8 @@ const Result = () => {
               })}
           </tbody>
         </table>
+        {state.isloading && "loading..."}
+        {state.error && "Something wrong. Please try again"}
       </div>
     </>
   );

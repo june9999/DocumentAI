@@ -61,14 +61,13 @@ const LayoutFlow = () => {
     { id: "e3-4", source: "3", target: "4", animated: true },
     { id: "e4-5", source: "4", target: "5", animated: true },
     { id: "e5-6", source: "5", target: "6", animated: true },
-    { id: "e5-6", source: "6", target: "7", animated: true },
-    { id: "e6-7", source: "7", target: "8", animated: true },
+    { id: "e6-7", source: "6", target: "7", animated: true },
+    { id: "e7-8", source: "7", target: "8", animated: true },
   ];
   const { fitView } = useReactFlow();
   const [nodes, setNodes, onNodesChange] = useNodesState(processNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onLayout = useCallback(() => {
     const layouted = getLayoutedElements(nodes, edges);
 
@@ -78,7 +77,6 @@ const LayoutFlow = () => {
     window.requestAnimationFrame(() => {
       fitView();
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes, edges]);
 
   return (
@@ -90,9 +88,7 @@ const LayoutFlow = () => {
       onEdgesChange={onEdgesChange}
       fitView
     >
-      <div className="absolte">
-        <MiniMap nodeStrokeWidth={3} />
-      </div>
+      <MiniMap nodeStrokeWidth={3} />
     </ReactFlow>
   );
 };
