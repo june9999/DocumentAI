@@ -1,4 +1,4 @@
-# Technique Interview from NeroSesne
+# Technique Interview from NeuroSesne
 
 ## Installation
 
@@ -48,6 +48,20 @@ use google_function.py, google_requirements.text as function
 
 deploy function
 
+
+## Key Features
+PDF Upload
+
+Process ReactFlow
+
+Automatic Document AI Trigger
+
+OCR Processer 
+
+
+
+
+
 ## Technologies used
 
 React.js, vite, react-router-dom, axios
@@ -56,6 +70,9 @@ Reactflow, Tailwind css, Flowbite
 
 Google Services:
 Cloud Functions API
+
 Cloud Document AI API
+
 Cloud Storage
+
 Cloud Storage API
