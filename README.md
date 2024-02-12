@@ -22,7 +22,7 @@ python manage.py runserver
 
 ## Google Setting
 
-# Create access credentials
+### Create access credentials
 
 create a new project
 
@@ -34,7 +34,7 @@ download json file and rename as token.json
 
 assign related roles to service account
 
-# Create google function
+### Create google function
 
 create new function
 
