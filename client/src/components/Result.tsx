@@ -1,6 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
 
+interface file {
+  name: string;
+  content: string;
+}
+
 const Result = () => {
   const [data, setData] = useState([]);
   // try with axios because of cors problem
@@ -14,7 +19,7 @@ const Result = () => {
         .catch((e) => console.log(e));
     };
     getResult();
-  }, []);
+  });
 
   return (
     <>
@@ -32,7 +37,7 @@ const Result = () => {
           </thead>
           <tbody>
             {data &&
-              data.map((e) => {
+              data.map((e: file) => {
                 return (
                   <tr className="border-b border-gray-200 dark:border-gray-700">
                     <th

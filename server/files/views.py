@@ -7,6 +7,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import json
 import requests
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent.parent 
 
 # Create your views here.
 def index(request):

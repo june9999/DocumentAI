@@ -68,6 +68,7 @@ const LayoutFlow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(processNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onLayout = useCallback(() => {
     const layouted = getLayoutedElements(nodes, edges);
 
@@ -77,6 +78,7 @@ const LayoutFlow = () => {
     window.requestAnimationFrame(() => {
       fitView();
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes, edges]);
 
   return (

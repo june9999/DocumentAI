@@ -129,5 +129,5 @@ import os
 
 # setting google application credentials
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] =os.path.join(BASE_DIR, 'env.json')
-
+        
 CORS_ALLOW_ALL_ORIGINS = True
