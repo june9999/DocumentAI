@@ -3,8 +3,11 @@
 ## Installation
 
 cd client
-npm i  
+
+npm i 
+
 change .env.example to .env
+
 add local server url as VITE_LOCAL
 
 cd ..
