@@ -1,54 +1,21 @@
-# Technique Interview from NeuroSesne
+## What is this? 
+This is a repository created based on one interview.
+
 
 ## Installation
+client: npm run dev
+server: python manage.py runserver
 
-cd client
+please add google credentials and related environment variables.
 
-npm i
 
-change .env.example to .env
-
-add local server url as VITE_LOCAL,
-
-cd ..
-
-cd server
-
-add token.json inside the server folder (token.json from Google Credential Setting)
-
-python manage.py runserver
-
-## Google Setting
-
-### Create access credentials
-
-create a new project in google console
-
-enable APIs
-
-create service account
-
-download json file and rename as token.json
-
-assign related roles to service account
-
-### Create google function
-
-create new function
-
-create two buckers, challenge-process and result_from_ch
-
-change trigger type as cloud storage, event type as google.cloud.storage.object.v1.finalized
-
-change info in google_functions.py
-
-copy content from google_function.py, google_requirements.text to create function
-
-deploy function
 
 ## Key Features
 
 PDF Upload
+  * Upload file one at a time or in bulk
+  * view what images they have uploaded
+  * Delete before confirmation
 
 Process ReactFlow
 
